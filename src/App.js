@@ -28,6 +28,8 @@ const App = () => {
       //fetch(tps://api.edman.com).then(response=>{response.json()})
     };
 
+    //new change
+
     getRecipes();
   }, [query]);
 
