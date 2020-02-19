@@ -16,20 +16,20 @@ const App = () => {
   const [query, setQuery] = useState("chicken");
 
   useEffect(() => {
+    const getRecipes = async () => {
+      const response = await fetch(
+        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      );
+      const data = await response.json();
+      setRecipes(data.hits);
+      console.log(data.hits);
+
+      //exact promises
+      //fetch(tps://api.edman.com).then(response=>{response.json()})
+    };
+
     getRecipes();
   }, [query]);
-
-  const getRecipes = async () => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    );
-    const data = await response.json();
-    setRecipes(data.hits);
-    console.log(data.hits);
-
-    //exact promises
-    //fetch(tps://api.edman.com).then(response=>{response.json()})
-  };
 
   //function to update the search
   const updateSearch = e => {
